@@ -271,7 +271,7 @@ redo:
 
 	default:
 		s.tok = 0
-		s.error(fmt.Sprintf("illegal character %#U", c))
+		s.error(fmt.Sprintf("illegal character (scanner) %#U", c))
 		goto redo
 	}
 

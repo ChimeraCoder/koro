@@ -223,6 +223,36 @@ var tokens = [...]string{
 	VAR:    "var",
 }
 
+
+var bengaliTokens = [...]string{
+    BREAK: "ভাঙ্গা",
+    CASE: "ক্ষেত্রে",
+    CHAN: "চ্যানেল",
+    CONST: "ধ্রুবক",
+    CONTINUE: "চলো",
+    DEFAULT: "ডিফল্ট",
+    DEFER: "মুলতবি",
+    ELSE: "অন্যভাবে",
+    FALLTHROUGH: "নির্ঝর",
+    FOR: "যখনই",
+    FUNC: "ফ",
+    GO: "কর",
+    GOTO:  "লাফ",
+    IF: "যদি",
+    IMPORT: "আমদানি",
+    INTERFACE: "ইন্টারফেস",
+    MAP: "অভিধান",
+    PACKAGE: "প্যাকেজ",
+    RANGE: "প্রতিটি",
+    RETURN: "ফিরুন",
+    SELECT: "নির্বাচন",
+    STRUCT: "গঠন",
+    SWITCH: "সুইচ",
+    TYPE: "ধরনের",
+    VAR: "পরিবর্তনশীল",
+}
+
+
 // String returns the string corresponding to the token tok.
 // For operators, delimiters, and keywords the string is the actual
 // token character sequence (e.g., for the token ADD, the string is
@@ -273,6 +303,7 @@ func (op Token) Precedence() int {
 }
 
 var keywords map[string]Token
+var bengaliKeywords map[string]Token
 
 func init() {
 	keywords = make(map[string]Token)
@@ -281,12 +312,25 @@ func init() {
 	}
 }
 
+
+func init() {
+    bengaliKeywords = make(map[string]Token)
+    for i := keyword_beg + 1; i < keyword_end; i++ {
+        bengaliKeywords[bengaliTokens[i]] = i
+    }
+}
+
+
 // Lookup maps an identifier to its keyword token or IDENT (if not a keyword).
 //
 func Lookup(ident string) Token {
 	if tok, is_keyword := keywords[ident]; is_keyword {
 		return tok
 	}
+
+    if tok, is_keyword := bengaliKeywords[ident]; is_keyword {
+        return tok
+    }
 	return IDENT
 }
 

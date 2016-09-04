@@ -471,7 +471,7 @@ l0:
 
 	default:
 		// anything else is illegal
-		Yyerror("syntax error: illegal character %#U", c)
+		Yyerror("syntax error (lexer): illegal character %#U", c)
 		goto l0
 	}
 
@@ -592,30 +592,30 @@ func (l *lexer) ident(c rune) {
 }
 
 var bengaliKeywords = map[string]int32{
-	"ভাঙ্গা":      LBREAK,
-	"ক্ষেত্রে":    LCASE,
-	"চ্যানেল":     LCHAN,
-	"ধ্রুবক":      LCONST,
-	"চলো":         LCONTINUE,
-	"ডিফল্ট":      LDEFAULT,
-	"মুলতবি":      LDEFER,
-	"অন্যভাবে":    LELSE,
-	"নির্ঝর":      LFALL,
-	"যখনই":        LFOR,
-	"ফ":           LFUNC,
-	"কর":          LGO,
-	"লাফ":         LGOTO,
-	"যদি":         LIF,
-	"আমদানি":      LIMPORT,
-	"ইন্টারফেস":   LINTERFACE,
-	"অভিধান":      LMAP,
-	"প্যাকেজ":     LPACKAGE,
-	"প্রতিটি":     LRANGE,
-	"ফিরুন":       LRETURN,
-	"নির্বাচন":    LSELECT,
-	"গঠন":         LSTRUCT,
-	"সুইচ":        LSWITCH,
-	"ধরনের":       LTYPE,
+	"ভাঙ্গা": LBREAK,
+	"ক্ষেত্রে": LCASE,
+	"চ্যানেল": LCHAN,
+	"ধ্রুবক": LCONST,
+	"চলো": LCONTINUE,
+	"ডিফল্ট": LDEFAULT,
+	"মুলতবি": LDEFER,
+	"অন্যভাবে": LELSE,
+	"নির্ঝর": LFALL,
+	"যখনই": LFOR,
+	"ফ":   LFUNC,
+	"কর": LGO,
+	"লাফ": LGOTO,
+	"যদি": LIF,
+	"আমদানি": LIMPORT,
+	"ইন্টারফেস": LINTERFACE,
+	"অভিধান": LMAP,
+	"প্যাকেজ": LPACKAGE,
+	"প্রতিটি": LRANGE,
+	"ফিরুন": LRETURN,
+	"নির্বাচন": LSELECT,
+	"গঠন": LSTRUCT,
+	"সুইচ": LSWITCH,
+	"ধরনের": LTYPE,
 	"পরিবর্তনশীল": LVAR,
 }
 
