@@ -471,7 +471,7 @@ l0:
 
 	default:
 		// anything else is illegal
-		Yyerror("syntax error: illegal character %#U", c)
+		Yyerror("syntax error (lexer): illegal character %#U", c)
 		goto l0
 	}
 
@@ -517,6 +517,21 @@ binop1:
 	l.tok = LASOP
 }
 
+var whitelist = map[rune]struct{}{}
+
+func init() {
+	for key, _ := range bengaliKeywords {
+		for _, character := range key {
+			whitelist[character] = struct{}{}
+		}
+	}
+}
+
+func whitelisted(c rune) bool {
+	_, ok := whitelist[c]
+	return ok
+}
+
 func (l *lexer) ident(c rune) {
 	cp := &lexbuf
 	cp.Reset()
@@ -535,7 +550,9 @@ func (l *lexer) ident(c rune) {
 					Yyerror("identifier cannot begin with digit %#U", c)
 				}
 			} else {
-				Yyerror("invalid identifier character %#U", c)
+				if !whitelisted(c) {
+					Yyerror("invalid identifier character %#U", c)
+				}
 			}
 			cp.WriteRune(c)
 		} else if isLetter(c) || isDigit(c) {
@@ -574,6 +591,34 @@ func (l *lexer) ident(c rune) {
 	l.tok = LNAME
 }
 
+var bengaliKeywords = map[string]int32{
+	"ভাঙ্গা": LBREAK,
+	"ক্ষেত্রে": LCASE,
+	"চ্যানেল": LCHAN,
+	"ধ্রুবক": LCONST,
+	"চলো": LCONTINUE,
+	"ডিফল্ট": LDEFAULT,
+	"মুলতবি": LDEFER,
+	"অন্যভাবে": LELSE,
+	"নির্ঝর": LFALL,
+	"যখনই": LFOR,
+	"ফ":   LFUNC,
+	"কর": LGO,
+	"লাফ": LGOTO,
+	"যদি": LIF,
+	"আমদানি": LIMPORT,
+	"ইন্টারফেস": LINTERFACE,
+	"অভিধান": LMAP,
+	"প্যাকেজ": LPACKAGE,
+	"প্রতিটি": LRANGE,
+	"ফিরুন": LRETURN,
+	"নির্বাচন": LSELECT,
+	"গঠন": LSTRUCT,
+	"সুইচ": LSWITCH,
+	"ধরনের": LTYPE,
+	"পরিবর্তনশীল": LVAR,
+}
+
 var keywords = map[string]int32{
 	"break":       LBREAK,
 	"case":        LCASE,
@@ -607,6 +652,12 @@ var keywords = map[string]int32{
 	"despiteallobjections": LIGNORE,
 	"whereas":              LIGNORE,
 	"insofaras":            LIGNORE,
+}
+
+func init() {
+	for key, val := range bengaliKeywords {
+		keywords[key] = val
+	}
 }
 
 func (l *lexer) number(c rune) {

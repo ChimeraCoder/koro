@@ -255,7 +255,11 @@ func (s *Scanner) findLineEnd() bool {
 }
 
 func isLetter(ch rune) bool {
-	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_' || ch >= utf8.RuneSelf && unicode.IsLetter(ch)
+	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_' || ch >= utf8.RuneSelf && unicode.IsLetter(ch) || isBengali(ch)
+}
+
+func isBengali(ch rune) bool {
+    return 'ঀ' <= ch && ch <= '৻'
 }
 
 func isDigit(ch rune) bool {
@@ -746,7 +750,7 @@ scanAgain:
 		default:
 			// next reports unexpected BOMs - don't repeat
 			if ch != bom {
-				s.error(s.file.Offset(pos), fmt.Sprintf("illegal character %#U", ch))
+				s.error(s.file.Offset(pos), fmt.Sprintf("illegal character %#U (unexpected BOM)", ch))
 			}
 			insertSemi = s.insertSemi // preserve insertSemi info
 			tok = token.ILLEGAL
