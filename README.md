@@ -24,9 +24,9 @@ For example, this is a "Hello, world" program:
 
 
 ```go
-package main
+প্যাকেজ main
 
-import "fmt"
+আমদানি "fmt"
 
 ফ main(){
     যদি true {
