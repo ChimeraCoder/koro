@@ -1,6 +1,6 @@
-package main
+প্যাকেজ main
 
-import "fmt"
+আমদানি "fmt"
 
 ফ main(){
     যদি true {
