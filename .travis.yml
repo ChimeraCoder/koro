@@ -1,10 +1,14 @@
-language: go
+sudo: required
 
-go:
-    - 1.9
-    - tip
+services:
+    - docker
+
+before_install:
+    - docker build -t chimeracoder/koro .
+    - docker run chimeracoder/koro
+
+
 
 script:
-    -  GOROOT_BOOTSTRAP=/usr/local/go ./all.bash 
-
+    - docker run chimeracoder/koro
 
