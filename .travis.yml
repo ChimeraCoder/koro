@@ -1,0 +1,10 @@
+language: go
+
+go:
+    - 1.9
+    - tip
+
+script:
+    -  GOROOT_BOOTSTRAP=/usr/local/go ./all.bash 
+
+
