@@ -1,0 +1,14 @@
+sudo: required
+
+services:
+    - docker
+
+before_install:
+    - docker build -t chimeracoder/koro .
+    - docker run chimeracoder/koro
+
+
+
+script:
+    - docker run chimeracoder/koro
+
