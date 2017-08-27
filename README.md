@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ChimeraCoder/koro.svg?branch=master)](https://travis-ci.org/ChimeraCoder/koro)
+
 #  কর
 
 কর (koro) is an extension of the Go compiler and toolchain to support programming in Bengali (বাংলা). 
