@@ -1,5 +1,15 @@
-
 #  কর
+
+কর (koro) is an extension of the Go compiler and toolchain to support programming in Bengali (বাংলা). 
+
+You can read this README in English or in Bengali.
+
+কর go কম্পাইলারের একটি এক্সটেনশন এবং বাংলা ভাষায় প্রোগ্রামিং করার  টুলচেইন। 
+
+এই রিডমিটা ইংরেজি আর বাংলাতে  পড়তে পারো।
+
+
+#  কর (বাংলা)
 
  কর(koro) go কম্পাইলারের একটি এক্সটেনশন এবং বাংলা ভাষায় প্রোগ্রামিং করার  টুলচেইন। 
 
@@ -61,7 +71,7 @@ func main() {
 ```
 
 
-#  কর
+#  কর (English)
 
  কর (koro) is an extension of the Go compiler and toolchain to support programming in Bengali (বাংলা).
 
