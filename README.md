@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ChimeraCoder/koro/gopher-tiger-logo/gopher_tiger.svg?sanitize=true" width="300px">
+  <img src="https://raw.githubusercontent.com/ChimeraCoder/koro/master/gopher_tiger.svg?sanitize=true" width="300px">
 </div>
 
 [![Build Status](https://travis-ci.org/ChimeraCoder/koro.svg?branch=master)](https://travis-ci.org/ChimeraCoder/koro)
